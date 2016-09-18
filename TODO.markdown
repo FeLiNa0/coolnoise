@@ -1,7 +1,14 @@
+Use Criterion to benchmark:
+- flex lexer
+- megaparsec lexer (treat as an external program, call `system()`)
+- bison parser
+- megaparsec parser
+- attoparsec parser
+
 Need to implement and describe the following:
 - A better counter.
-- Types for COOL expressions.
-- A concise COOL expression parser with good error messages.
+- A concise COOL expression parser with good error messages using megaparsec.
+- A concise COOL expression parser using attoparsec.
 - Tests for the parser based on expressions from the examples.
 - Tests based on randomly generated expressions.
 

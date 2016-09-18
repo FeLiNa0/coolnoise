@@ -6,8 +6,51 @@ This Haskell code implements a parser and a generator for programs written in th
 |----------------|---------------------------------------------------------|
 | `countCool.hs` | Counts the number of COOL expressions of a given depth. |
 
-## Installing
-This project uses [stack](http://docs.haskellstack.org/en/stable/README/).
+## Installation and Compilation
+This project uses [stack](http://docs.haskellstack.org/en/stable/README/) and
+the Haskell LTS 7.0 distribution. [Read these download and installation
+instructions for stack.](https://docs.haskellstack.org/en/stable/install_and_upgrade/)
+
+If you have not installed GHC 8.0.1 yet, run 
+
+```
+stack setup
+```
+
+This command will download all dependencies and compile the project:
+
+```
+stack build
+```
+
+## Examples
+### Lexer
+
+After compiling the program, run the following command to see the help file:
+
+```
+stack exec coolnoise-exe -- --help
+```
+
+Use the `--file` option to lex a file:
+
+```
+stack exec coolnoise-exe -- --file cool_examples/hello_world.cl
+```
+
+You can also run the lexer on a string with the `--input` option:
+
+```
+stack exec coolnoise-exe -- --input '(* sample *) main() : SELF_TYPE { out_string("HI") };' 
+```
+
+## Tests
+
+None yet.
+
+## Benchmarks
+
+None yet.
 
 ## Number of Expressions
 
