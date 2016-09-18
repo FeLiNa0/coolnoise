@@ -16,14 +16,14 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Cool.Types
-                       Cool.Generate
+                       Cool.Lex
                        Cool.Parse
-  build-depends:       base >= 4.7 && < 5,
-                       semigroups >= 0.18 && < 0.20,
-                       bytestring >= 0.10 && < 0.20,
-                       -- alex >= 3 && < 4,
-                       megaparsec >= 5 && < 6,
-                       attoparsec >= 0.13 && < 0.14
+                       Cool.Generate
+  build-depends:       base >= 4.7 && < 5
+                     , bytestring >= 0.10 && < 0.20
+                     --, alex >= 3 && < 4
+                     , megaparsec >= 4.4 && < 6
+                     , attoparsec >= 0.12 && < 0.14
   default-language:    Haskell2010
 
 executable coolnoise-exe
@@ -31,6 +31,8 @@ executable coolnoise-exe
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
+                     , optparse-applicative >= 0.10 && < 0.20
+                     , criterion >= 1.1 && < 1.2
                      , coolnoise
   default-language:    Haskell2010
 
@@ -39,6 +41,7 @@ test-suite coolnoise-test
   hs-source-dirs:      test
   main-is:             Spec.hs
   build-depends:       base
+                     , optparse-applicative >= 0.10 && < 0.20
                      , coolnoise
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
