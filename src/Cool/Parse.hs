@@ -1,28 +1,3 @@
--- test error handling
---
--- TODO *) should throw an error
--- long strings -> throw an error
---
--- \n in string -> ERROR
--- "unterminated string constant"
--- keep lexing at next line
---
--- invalid character -> print error, keep lexing
---
--- EOF in comment -> ERROR
---
--- TODO: lex function takes string -> [token]
--- benchmark Data.Sequence, list (: and reverse)
--- get flex printing tokens in the same way
-
--- TODO strings
--- TODO whitespace
--- TODO reject all other characters
-
--- TODO: inline
--- {-# INLINE identChar #-}
---
--- benchmark
 module Cool.Parse (parseStringWith, parseFileWith) where
 
 import Text.Megaparsec
