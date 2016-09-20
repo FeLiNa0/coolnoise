@@ -44,13 +44,24 @@ You can also run the lexer on a string with the `--input` option:
 stack exec coolnoise-exe -- --input '(* sample *) main() : SELF_TYPE { out_string("HI") };' 
 ```
 
+### Parser
+
+### Generator
+
 ## Tests
 
 None yet.
 
 ## Benchmarks
 
-None yet.
+To benchmark the lexer, run
+
+```
+stack build 
+stack exec bench-cli -- --output benchmark.html 
+```
+
+Open `benchmark.html` in a browser to see the results.
 
 ## Number of Expressions
 
