@@ -1,14 +1,9 @@
--- two strategies:
---
--- genenerate all expressions up to a certain depth with a maximum number of variable arguments
---
--- generate a random expression tree with a constant number of nodes
--- expression types, tree depth, and tree breadth can be adjusted by passing in different expression pickers
 module Cool.Generate (generateAll, RandomData(..)) where
 
 import Cool.Types
 import Data.List.NonEmpty (NonEmpty(..))
 
+-- TODO tag data with breadth and depth
 data RandomData = Empty | HasData deriving (Show, Eq, Ord)
 
 l `cross` n = sequence $ replicate n l
@@ -30,6 +25,7 @@ defaultID     = "a"
 defaultTypeID = "A"
 defaultBinding e = (defaultID, defaultTypeID, e)
 
+arg0 :: [a -> Expr a]
 arg0 =
   [ \tag -> Integer tag 0
   , \tag -> String  tag ""

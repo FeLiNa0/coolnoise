@@ -37,7 +37,7 @@ data Expr a
   | Sequence a                   (NonEmpty (Expr a))
   | Static   a ID (Maybe TypeID) (Expr a) [(Expr a)]
   | Case     a                   (Expr a) (Bindings a)
-  | Let      a                   (Expr a) (Bindings a)
+  | Let      a                   (Expr a) (Bindings a)  -- TODO let a:T2; b:T2, ...
   deriving (Eq, Show, Ord)
 
-type Bindings a = (NonEmpty (ID, TypeID, Expr a))
+type Bindings a = NonEmpty (ID, TypeID, Expr a)
