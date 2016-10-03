@@ -1,42 +1,43 @@
-module Cool.Types (ID, Type, ArithOp, BoolOp, Expr) where
+module Cool.Types (ID, TypeID, ArithOp(..), BoolOp(..), Expr(..)) where
 
-import Data.List.NonEmpty
+import Data.List.NonEmpty (NonEmpty((:|)))
 
 type ID = String
-type Type = String
+type TypeID = String
 
 data ArithOp
   = Add | Sub | Mul | Div
-  deriving (Show, Eq)
+  deriving (Show, Eq, Ord)
 
 data BoolOp
   = Lt | Le | Eq
-  deriving (Show, Eq)
+  deriving (Show, Eq, Ord)
 
-data Expr
-  = Integer Integer
-  | String String
-  | Bool Bool
-  | ID ID
-  | TypeID Type
-  | New Type
+data Expr a 
+  = Integer a Integer
+  | String  a String
+  | Bool    a Bool
+  | ID      a ID
+  | TypeID  a TypeID
+  | New     a TypeID
 
-  | Assign ID  Expr
-  | IsVoid     Expr
-  | IntNegate  Expr
-  | BoolNegate Expr
-  | Paren      Expr
+  | Assign     a ID (Expr a)
+  | IsVoid     a    (Expr a)
+  | IntNegate  a    (Expr a)
+  | BoolNegate a    (Expr a)
+  | Paren      a    (Expr a)
 
-  | Op ArithOp Expr Expr
-  | BOp BoolOp Expr Expr
-  | While      Expr Expr
+  | Op    a ArithOp (Expr a) (Expr a)
+  | BOp   a BoolOp  (Expr a) (Expr a)
+  | While a         (Expr a) (Expr a)
 
-  | IfThenElse Expr Expr Expr
+  | IfThenElse a (Expr a) (Expr a) (Expr a)
 
-  | Call ID [Expr]
+  | Call     a ID                [(Expr a)]
+  | Sequence a                   (NonEmpty (Expr a))
+  | Static   a ID (Maybe TypeID) (Expr a) [(Expr a)]
+  | Case     a                   (Expr a) (Bindings a)
+  | Let      a                   (Expr a) (Bindings a)
+  deriving (Eq, Show, Ord)
 
-  | Sequence               (NonEmpty Expr)
-  | Static ID (Maybe Type) Expr [Expr]
-
-  | Case           Expr (NonEmpty (ID, Type, Expr))
-  | Let            Expr (NonEmpty (ID, Type, Expr))
+type Bindings a = (NonEmpty (ID, TypeID, Expr a))

@@ -23,10 +23,10 @@ import Cool.Types (Expr)
 -- <-
 -- parse
 
-parseWithMega :: a -> Expr
+parseWithMega :: a -> Expr b
 parseWithMega = undefined
 
-parseWithAtto :: a -> Expr
+parseWithAtto :: a -> Expr b
 parseWithAtto = undefined
 
 parseFileWith file parser = do f <- readFile file
