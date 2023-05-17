@@ -2,6 +2,10 @@
 This Haskell code implements a parser and a generator for programs written in the 
 [COOL language](http://theory.stanford.edu/~aiken/software/cool/cool.html).
 
+This was used for fuzz testing the first two weeks' work of my project as a senior year student
+at my alma mater, the New Mexico Institute of Mining and Technology
+(New Mexico Tech).
+
 | File           | Purpose                                                 |
 |----------------|---------------------------------------------------------|
 | `countCool.hs` | Counts the number of COOL expressions of a given depth. |
